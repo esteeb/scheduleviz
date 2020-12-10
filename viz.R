@@ -50,14 +50,11 @@ thur <- thur%>%
   mutate(day = "Th")%>%
   melt(id.vars = "day")
 
-
 df1 <- rbind(mon, tues, weds, thur)
 
 colnames(df1) <- c("day","time","in.class")
 df1$time <- as.factor(gsub("X","",df1$time))
 df1$day <- as.factor(df1$day)
-
-
 
 p <- ggplot(df1, aes(x =1, y=time, fill = in.class)) + 
   geom_tile(colour = "white") + facet_grid(cols = vars(day)) + 
